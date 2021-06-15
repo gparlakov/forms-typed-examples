@@ -1,31 +1,49 @@
-import { TestBed, async } from '@angular/core/testing';
+/**
+ *  CUSTOM TEMPLATE
+ *
+ *  AVAILABLE PROPERTIES:
+ *
+ *  params: {importPath: string, type: string} 
+ *  specFileName: app.component.spec.ts
+ *  normalizedName: app.component
+ *  normalizedName: app.component
+ *  className: AppComponent
+ *  publicMethods: ngOnInit
+ *  declaration: 
+ *  builderExports: 
+ *  constructorParams: 
+ *  shorthand: a
+ *
+ *
+ *
+ *
+ */
 import { AppComponent } from './app.component';
+import { autoSpy } from 'autoSpy';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+  it('when ngOnInit is called it should', () => {
+    // arrange
+    const { build } = setup().default();
+    const a = build();
+    // act
+    a.ngOnInit();
+    // assert
+    // expect(a).toEqual
   });
-
-  it(`should have as title 'angular8app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('angular8app');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to angular8app!');
-  });
+  
 });
+
+// tslint-disable-type
+function setup() {
+  const builder = {
+    default() {
+      return builder;
+    },
+    build() {
+      return new AppComponent();
+    }
+  };
+
+  return builder;
+}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,13 @@ export class AppComponent {
   form = new FormGroup({
     name: new FormControl('test')
   });
+
+  constructor(dep: Component, dep2: Router) {}
   ngOnInit() {
     // this.c.setValue('', { emitModelToViewChange: true });
+  }
+
+  aPublicMethod() {
+
   }
 }
